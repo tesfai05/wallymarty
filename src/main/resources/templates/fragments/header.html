@@ -1,0 +1,33 @@
+<header th:fragment="header" xmlns:th="http://www.thymeleaf.org">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<a class="navbar-brand" href="#">WALLYMARTY Customer Relationship Management(CRM) System :::</a>
+		<div class="collapse navbar-collapse" id="navbarColor01">
+			<ul class="navbar-nav mr-auto">
+			
+				<li class="nav-item"><a class="nav-link" href="/customers/list">Customers</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="/primecustomers/list">PrimeCustomers</a></li>
+			</ul>
+			<form method="get" action="/customers/search">
+				<div style="margin-top: 1em;" class="row">
+					<div class="col-md-12">
+						<div class="input-group">
+							<input type="text" class="form-control mr-sm-2" id="txt"
+								name="txt"
+								placeholder="search"
+								th:value="${txt}" autofocus required/>
+							<div class="input-group-append">
+								<button id="btnSubmit" type="submit"
+									class="btn btn-secondary my-2 my-sm-0">Search</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+
+		</div>
+	</nav>
+</header>
+
+
+

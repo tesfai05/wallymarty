@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/main-layout}">
+<head>
+<meta charset="ISO-8859-1">
+
+<title>WallyMarty - Prime Customers</title>
+</head>
+<body>
+	<div class="container" layout:fragment="content">
+		<div>
+			<span style="font-size: 1.5em">List of WallyMarty Prime
+				Customers</span> <span class="nav-link"> <a
+				class="btn btn-outline-primary btn-lg" href="/customers/new"
+				style="float: right" type="submit">Add New Customer</a>
+			</span>
+
+		</div>
+		<div>
+			<table class="table table-striped ">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">Customer ID Number</th>
+						<th scope="col">Name</th>
+						<th scope="col">Phone Contact Number</th>
+						<th scope="col">Date Of Birth</th>
+						<th scope="col" colspan="2">Action</th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="customer, std : ${customers}">
+						<th scope="row" th:text="${std.count}"></th>
+						<td th:text="${customer.customerNumber}"></td>
+						<td th:text="${customer.name}"></td>
+						<td th:text="${customer.phoneContactNumber}"></td>
+						<td th:text="${customer.dateOfBirth}"></td>
+						<td><a th:href="@{'/editcustomer/' + ${customer.customerId}}">Edit</a></td>
+						<td><a
+							th:href="@{'/deletecustomer/' + ${customer.customerId}}"
+							onclick="if(!(confirm('Are you sure you want to delete ')))return false">Delete</a></td>
+					</tr>
+					<tr th:if="${customersCount < 1}">
+						<td colspan="10" style="text-align: center">Currently No
+							Prime Customer is Available</td>
+					</tr>
+
+				</tbody>
+
+			</table>
+			<hr />
+		</div>
+	</div>
+</body>
+</html>
